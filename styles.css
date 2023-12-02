@@ -2,6 +2,7 @@
 
 :root {
    --main-color: #3F007A;
+   --second-color: #7900EB;
 }
 
 * {
@@ -15,17 +16,25 @@
 }
 
 nav {
-   width: 100dvw;
+   min-width: 100dvw;
    height: 60px;
    padding-inline: 200px;
    background-color: var(--main-color);
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: center;
    position: fixed;
    top: 0;
    left: 0;
    z-index: 1;
+}
+
+.navbar-wrapper {
+   width: 100%;
+   max-width: 1280px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .logo h1 {
@@ -33,48 +42,60 @@ nav {
    cursor: default;
 }
 
+#navbar i {
+   display: none;
+}
+
 .buttons {
    display: flex;
    gap: 5rem;
 }
 
-nav a {
+.buttons a {
    color: white;
    font-weight: 600;
    text-decoration: none;
 }
 
-main {
-   padding-inline: 200px;
-}
-
 #home {
-   height: 100dvh;
-   padding-inline: 100px;
+   min-height: 100dvh;
+   padding-inline: 200px;
    display: flex;
    flex-flow: column;
    align-items: center;
    justify-content: center;
-   gap: 1rem;
-   text-align: center;
 }
 
-#home h1 {
+.home-wrapper {
+   max-width: 1280px;
+   text-align: center;
+   display: flex;
+   flex-flow: column;
+}
+
+.home-wrapper h1 {
    font-size: 6rem;
    color: var(--main-color);
 }
 
-#home p {
+.home-wrapper p {
    font-size: 1.25rem;
    font-weight: 600;
 }
 
-#home p:first-child {
-   margin-bottom: -20px;
+#projects {
+   min-width: 100dvw;
+   padding-top: 2rem;
+   padding-inline: 200px;
+   display: flex;
+   flex-flow: column;
+   align-items: center;
+   justify-content: center;
 }
 
-#projects {
-   margin: 2rem 0;
+.project-wrapper {
+   width: 100%;
+   max-width: 1280px;
    display: flex;
    flex-flow: column;
    gap: 2rem;
@@ -118,12 +139,134 @@ main {
 }
 
 footer {
-   height: 100dvh;
-   margin-top: var(--scroll-padding);
-   padding-top: var(--scroll-padding);
+   min-height: 75dvh;
+   padding-top: 2rem;
    padding-inline: 200px;
+   display: flex;
+   justify-content: center;
+}
+
+.footer-wrapper {
+   width: 100%;
+   max-width: 1280px;
 }
 
 .contact-header h1 {
    font-size: 4rem;
+   color: var(--main-color);
+}
+
+@media screen and (max-width: 980px) {
+   nav {
+      padding-inline: 75px;
+   }
+
+   #home {
+      padding-inline: 75px;
+   }
+
+   #projects {
+      padding-inline: 75px;
+   }
+
+   footer {
+      padding-inline: 75px;
+
+   }
+}
+
+@media screen and (max-width: 540px) {
+   nav {
+      padding-inline: 30px;
+   }
+
+   .navbar-wrapper {
+      height: inherit;
+      padding: inherit;
+      position: absolute;
+      background-color: var(--main-color);
+   }
+
+   #navbar i {
+      display: block;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+   }
+
+   .menu-background {
+      width: 100%;
+      height: 100%;
+   }
+
+   .buttons {
+      gap: 0;
+      width: 100dvw;
+      height: 45px;
+      padding-inline: inherit;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--second-color);
+      transform: translateY(-100%);
+      align-items: center;
+      justify-content: space-between;
+      transition: all .25s;
+      z-index: -1;
+   }
+
+   .active {
+      display: flex;
+      transform: translateY(0);
+   }
+
+   #home {
+      padding-inline: 30px;
+   }
+
+   #home h1 {
+      font-size: 5rem;
+   }
+
+   #projects {
+      padding-inline: 30px;
+   }
+
+   .project-card {
+      grid-template-columns: auto;
+   }
+
+   .card-image {
+      order: -1;
+   }
+
+   .card-image img {
+      border-radius: 10px 10px 0 0;
+   }
+
+   footer {
+      padding-inline: 30px;
+   }
+}
+
+@media screen and (max-width: 375px) {
+   nav {
+      padding-inline: 15px;
+   }
+
+   #home {
+      padding-inline: 15px;
+   }
+
+   #home h1 {
+      font-size: 5rem;
+   }
+
+   #projects {
+      padding-inline: 15px;
+   }
+
+   footer {
+      padding-inline: 15px;
+   }
 }
