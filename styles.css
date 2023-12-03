@@ -364,7 +364,7 @@ footer {
       position: absolute;
       top: 100%;
       left: 0;
-      background-color: var(--highlight);
+      background-color: var(--second-color);
       transform: translateY(-100%);
       align-items: center;
       justify-content: space-between;
@@ -379,7 +379,7 @@ footer {
 
 
    .buttons a {
-      color: var(--main-color);
+      color: white;
    }
 
    #home {
