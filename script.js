@@ -1,10 +1,13 @@
+// Setting the general offsetHeight of the navbar
 const navigationHeight = document.getElementById("navbar").offsetHeight;
 
 document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px")
 
+
+
+// Creating the scroll effect
 const observer = new IntersectionObserver((entries) => {
    entries.forEach((entry) => {
-      console.log(entry)
       if (entry.isIntersecting) {
          entry.target.classList.add("show")
       } else {
@@ -17,7 +20,7 @@ const hiddenElements = document.querySelectorAll(".hidden")
 hiddenElements.forEach(el => { observer.observe(el) });
 
 
-
+// Handling the navbar and button clicks to scroll through the page
 function handleMenuClick() {
    const menu = document.querySelector(".buttons");
    menu.classList.toggle("active");
@@ -32,23 +35,18 @@ document.addEventListener("click", function (event) {
    }
 })
 
-function handlePageClick(menu) {
-   menu.classList.remove("active")
-}
-
 function delayScroll(targetHref) {
    const targetElement = document.getElementById(targetHref);
    if (targetElement) {
       const targetOffset = targetElement.offsetTop - navigationHeight;
 
       if (window.innerWidth < 540) {
-         const delayTime = 125;
          setTimeout(() => {
             window.scrollTo({
                top: targetOffset,
                behavior: "smooth"
             });
-         }, delayTime);
+         }, 125);
       } else {
          window.scrollTo({
             top: targetOffset,
@@ -64,7 +62,7 @@ buttons.forEach(button => {
       event.preventDefault();
       const targetHref = this.getAttribute("href").substring(1);
       const menu = document.querySelector(".buttons");
-      handlePageClick(menu);
+      menu.classList.remove("active");
       delayScroll(targetHref);
    });
 });
