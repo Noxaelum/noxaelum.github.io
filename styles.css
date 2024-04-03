@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,800;1,9..40,400;1,9..40,600;1,9..40,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,800;1,9..40,400;1,9..40,600;1,9..40,800&display=swap");
 
 :root {
-   --background-color: #2C0E47;
-   --main-color: #3F007A;
-   --second-color: #9F5AE0;
-   --highlight: #CE99FF;
+   --background-color: #2c0e47;
+   --main-color: #3f007a;
+   --second-color: #9f5ae0;
+   --highlight: #ce99ff;
 }
 
 * {
    box-sizing: border-box;
    margin: 0;
    padding: 0;
-   font-family: 'DM Sans', sans-serif;
+   font-family: "DM Sans", sans-serif;
    scroll-behavior: smooth;
    /* outline: 1px solid brown; */
    scroll-padding-top: var(--scroll-padding, 60px);
@@ -37,51 +37,69 @@
 
 nav {
    width: 100dvw;
-   height: 60px;
-   padding-inline: 100px;
    background-color: white;
-   border-bottom: 1.5px solid var(--background-color);
+   border-bottom: 0.125rem solid var(--main-color);
    display: flex;
    align-items: center;
    justify-content: center;
    position: fixed;
    top: 0;
    left: 0;
-   z-index: 1;
+   z-index: 9999;
 }
 
 .navbar-wrapper {
    width: 100%;
-   max-width: 980px;
+   height: 60px;
+   padding-inline: 1rem;
+   background-color: white;
+   position: relative;
    display: flex;
    align-items: center;
    justify-content: space-between;
 }
 
-.logo h1 {
+.logo {
+   text-decoration: none;
    color: var(--main-color);
-   cursor: default;
+   cursor: pointer;
 }
 
 #navbar i {
-   display: none;
+   display: block;
+   color: var(--main-color);
+   font-size: 1.25rem;
+   cursor: pointer;
 }
 
 .buttons {
+   width: inherit;
+   height: 45px;
+   padding-inline: 1.5rem;
+   position: absolute;
+   top: 0;
+   left: 0;
    display: flex;
-   gap: 5rem;
+   background-color: var(--main-color);
+   align-items: center;
+   justify-content: space-evenly;
+   transition: all 0.25s;
+   z-index: -1;
+}
+
+.active {
+   top: 100%;
 }
 
 .buttons a {
-   color: var(--main-color);
+   color: white;
    font-weight: 600;
    text-decoration: none;
-   transition: all .25s;
+   transition: all 0.25s;
 }
 
 .button-focus {
-   transform: scale(1.25, 1.25);
-   font-weight: 700;
+   transform: scale(1.07, 1.07);
 }
 
 .button-outFocus {
@@ -91,67 +109,6 @@ nav {
 main {
    display: grid;
    gap: 6rem;
-}
-
-#home {
-   min-height: 100dvh;
-   padding-inline: 100px;
-   display: flex;
-   flex-flow: column;
-   align-items: center;
-   justify-content: center;
-}
-
-.home-wrapper {
-   max-width: 980px;
-   text-align: center;
-   display: flex;
-   flex-flow: column;
-   align-items: center;
-   justify-content: center;
-   position: relative;
-}
-
-.home-wrapper h1 {
-   font-size: 6rem;
-   color: var(--highlight);
-}
-
-.home-wrapper p {
-   font-size: 1.25rem;
-   font-weight: 600;
-   line-height: 1.6;
-   color: white;
-}
-
-.learnMore-wrapper {
-   margin-top: 2rem;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 10px;
-   background-color: var(--highlight);
-}
-
-.learnMore-wrapper a {
-   width: fit-content;
-   text-decoration: none;
-   font-size: 1.25rem;
-   font-weight: 600;
-   color: white;
-   background-color: var(--second-color);
-   border-radius: inherit;
-   padding: 0.5rem 1rem;
-   transform: translateY(0);
-   transition: all .25s;
-}
-
-.learnMore-wrapper a:hover {
-   transform: translateY(-13%);
-}
-
-.learnMore-wrapper a:active {
-   transform: translateY(0);
 }
 
 .bg-image {
@@ -171,10 +128,67 @@ main {
    z-index: -1;
 }
 
+#home {
+   min-height: 100dvh;
+   width: 100dvw;
+   padding-inline: 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.home-wrapper {
+   color: white;
+   display: flex;
+   flex-flow: column;
+   gap: 0.5rem;
+   font-weight: 600;
+}
+
+.home-wrapper p {
+   font-size: 1.125rem;
+   line-height: 1.6;
+}
+
+.home-wrapper h1 {
+   font-size: 4rem;
+   color: var(--highlight);
+}
+
+.learnMore-wrapper {
+   align-self: center;
+   margin-top: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 10px;
+   background-color: var(--highlight);
+}
+
+.learnMore-wrapper a {
+   width: fit-content;
+   text-decoration: none;
+   font-size: 1.25rem;
+   color: white;
+   background-color: var(--second-color);
+   border-radius: inherit;
+   padding: 0.5rem 1rem;
+   transform: translateY(0);
+   transition: all 0.125s;
+}
+
+.learnMore-wrapper a:hover {
+   transform: translateY(-13%);
+}
+
+.learnMore-wrapper a:active {
+   transform: translateY(0);
+}
+
 #projects {
-   min-width: 100dvw;
+   width: 100dvw;
    padding-top: 2rem;
-   padding-inline: 100px;
+   padding-inline: 1rem;
    display: flex;
    flex-flow: column;
    align-items: center;
@@ -182,7 +196,6 @@ main {
 }
 
 .project-wrapper {
-   width: 100%;
    max-width: 980px;
    display: flex;
    flex-flow: column;
@@ -190,14 +203,14 @@ main {
 }
 
 .project-header h1 {
-   font-size: 4rem;
+   font-size: 3rem;
    color: var(--main-color);
 }
 
 .card-wrapper {
    display: flex;
    flex-flow: column;
-   gap: 3rem;
+   gap: 4rem;
 }
 
 .card-container {
@@ -207,41 +220,55 @@ main {
 
 .project-card {
    display: grid;
-   grid-template-columns: auto 45%;
+   grid-template-columns: auto;
    border-radius: inherit;
-   border: 1px solid var(--main-color);
-   transition: all .25s;
+   border: 0.25px solid var(--main-color);
+   transition: all 0.25s;
    background-color: white;
 }
 
 .project-card:hover {
-   transform: translateY(-3%);
+   transform: translateY(-2%);
 }
 
 .card-content {
-   padding: 30px;
+   padding: 1rem;
    display: flex;
    flex-flow: column;
-   gap: 1rem;
+   gap: 2rem;
+}
+
+.card-content header {
+   display: flex;
+   flex-flow: column;
+   gap: 0.25rem;
 }
 
 .card-content h1 {
-   font-size: 2rem;
+   font-size: 1.75rem;
+   color: var(--background-color);
+}
+
+.card-content h3 {
+   color: gray;
+}
+
+.card-content p {
+   line-height: 1.6;
 }
 
 .card-content a {
    width: fit-content;
    text-decoration: none;
-   font-weight: 800;
+   font-weight: 600;
    color: var(--main-color);
    position: relative;
-   transition: all .25s;
+   transition: all 0.25s;
 }
 
 .card-content a:hover {
    width: fit-content;
    text-decoration: none;
-   font-weight: 800;
    color: var(--second-color);
 }
 
@@ -253,7 +280,7 @@ main {
    position: absolute;
    top: 100%;
    left: 0;
-   transition: all .25s;
+   transition: all 0.25s;
    opacity: 0;
    z-index: 1;
    transform: translateX(-50%);
@@ -265,8 +292,12 @@ main {
    background-color: var(--highlight);
 }
 
+.card-image {
+   order: -1;
+}
+
 .card-image img {
-   border-radius: 0 10px 10px 0;
+   border-radius: 10px 10px 0 0;
    width: 100%;
    height: 100%;
    object-fit: cover;
@@ -274,15 +305,17 @@ main {
 }
 
 footer {
+   width: 100dvw;
    min-height: 50dvh;
    padding-top: 2rem;
-   padding-inline: 100px;
+   padding-inline: 1rem;
    display: flex;
+   flex-flow: column;
+   align-items: center;
    justify-content: center;
 }
 
 .footer-wrapper {
-   width: 100%;
    max-width: 980px;
    display: flex;
    flex-flow: column;
@@ -290,7 +323,7 @@ footer {
 }
 
 .contact-header h1 {
-   font-size: 4rem;
+   font-size: 3rem;
    color: var(--main-color);
 }
 
@@ -309,16 +342,16 @@ footer {
 .social-media-link i {
    color: var(--main-color);
    font-size: 2rem;
-   transition: all .25s;
+   transition: all 0.25s;
 }
 
 .social-media-link i:hover {
    color: var(--second-color);
-   transform: scale(1.25, 1.25);
+   transform: scale(1.1, 1.1);
 }
 
 .footer-wrapper p {
-   font-size: 1.25rem;
+   line-height: 1.6;
 }
 
 .footer-wrapper p span {
@@ -326,116 +359,100 @@ footer {
    font-weight: 600;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (min-width: 640px) {
    nav {
-      padding-inline: 75px;
-   }
-
-   #home {
-      padding-inline: 75px;
-   }
-
-   #projects {
-      padding-inline: 75px;
-   }
-
-   footer {
-      padding-inline: 75px;
-
-   }
-}
-
-@media screen and (max-width: 540px) {
-   nav {
-      padding-inline: 30px;
+      padding-inline: 2.5rem;
    }
 
    .navbar-wrapper {
-      height: inherit;
-      padding: inherit;
-      position: absolute;
-      background-color: white;
-   }
-
-   .logo h1 {
-      font-size: 1.25rem;
+      background-color: transparent;
+      padding-inline: 0;
    }
 
    #navbar i {
-      display: block;
-      color: var(--main-color);
-      font-size: 1.25rem;
-      cursor: pointer;
-   }
-
-   .menu-background {
-      width: 100%;
-      height: 100%;
+      display: none;
    }
 
    .buttons {
-      gap: 0;
-      width: 100dvw;
-      height: 45px;
-      padding-inline: inherit;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: var(--second-color);
-      transform: translateY(-100%);
-      align-items: center;
-      justify-content: space-between;
-      transition: all .25s;
-      z-index: -1;
-   }
-
-   .active {
       display: flex;
-      transform: translateY(0);
+      width: fit-content;
+      height: fit-content;
+      padding-inline: 0;
+      position: static;
+      background-color: transparent;
+      gap: 2rem;
+      z-index: auto;
    }
-
 
    .buttons a {
-      color: white;
+      color: var(--main-color);
    }
 
    #home {
-      padding-inline: 30px;
-   }
-
-   #home h1 {
-      font-size: 4rem;
+      padding-inline: 2.5rem;
    }
 
    .home-wrapper p {
-      font-size: 1rem;
+      font-size: 1.3rem;
+   }
+
+   .home-wrapper h1 {
+      font-size: 5rem;
    }
 
    #projects {
-      padding-inline: 30px;
-   }
-
-   .project-header h1 {
-      font-size: 3rem;
+      padding-inline: 2.5rem;
    }
 
    .project-card {
-      grid-template-columns: auto;
+      grid-template-columns: auto 45%;
    }
 
    .card-image {
-      order: -1;
+      order: 1;
    }
 
    .card-image img {
-      border-radius: 10px 10px 0 0;
+      border-radius: 0 10px 10px 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
    }
 
    footer {
-      padding-inline: 30px;
+      padding-inline: 2.5rem;
+   }
+}
+
+@media screen and (min-width: 1024px) {
+   .home-wrapper {
+      width: 80%;
    }
 
-   .contact-header h1 {
-      font-size: 3rem;
+   .project-wrapper {
+      width: 80%;
+   }
+
+   .footer-wrapper {
+      width: 80%;
+   }
+}
+
+@media screen and (min-width: 1280px) {
+   nav {
+      padding-inline: 6rem;
+   }
+
+   #home {
+      padding-inline: 6rem;
+   }
+
+   #projects {
+      padding-inline: 6rem;
+   }
+
+   footer {
+      padding-inline: 6rem;
    }
 }
